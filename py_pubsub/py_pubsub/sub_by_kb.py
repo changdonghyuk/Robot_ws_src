@@ -4,10 +4,10 @@ from rclpy.node import Node
 from std_msgs.msg import String
 
 
-class sub_by_kb(Node):
+class Sub_by_KB(Node):
 
     def __init__(self):
-        super().__init__('minimal_subscriber')
+        super().__init__('sub_by_kb')
         self.create_subscription(String, 'control', self.get_control,10)
 
     def get_control(self, msg):
@@ -17,7 +17,7 @@ class sub_by_kb(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    node = sub_by_kb()
+    node = Sub_by_KB()
 
     rclpy.spin(node)
 

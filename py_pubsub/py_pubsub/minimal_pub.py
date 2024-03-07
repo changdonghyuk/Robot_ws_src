@@ -1,42 +1,40 @@
-
+import rclpy
 from rclpy.node import Node
-from stm32.getchar import Getchar
-from std_msgs.msg import String # topic 설정 
 
-sp  = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
+from std_msgs.msg import String
 
-class Sub_led_msg(Node):
+
+class MinimalPublisher(Node):
 
     def __init__(self):
-        super().__init__('sub_led_msg')
-        self.publisher_ = self.create_publisher(String, 'led_ctrl', 1)
-      
+        super().__init__('minimal_publisher')
+        self.publisher_ = self.create_publisher(String, 'hello', 10)
+        timer_period = 0.5  # seconds
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.i = 0
 
-    def get led msg(self):
-        
-        
-        if msg.data =='LED ON':
-        	print("Send '1')
-        	sp.write(b'1') 
-        elif msg.data =='LED OFF':
-        	print("Send '0')
-        	sp.write(b'0') 
-        else pass
+    def timer_callback(self):
+           
+        msg = String()
+        msg.data = 'Hello World: %d' % self.i
+        self.publisher_.publish(msg)
+        self.get_logger().info('Publishing: "%s"' % msg.data)
+        self.i += 1
 
 
 def main(args=None):
-   
+    rclpy.init(args=args)
 
-    node = Sub_led_msg()
+    minimal_publisher = MinimalPublisher()
 
-    rclpy.spin(node)
+    rclpy.spin(minimal_publisher)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    node.destroy_node()
+    minimal_publisher.destroy_node()
     rclpy.shutdown()
 
 
-if __name__ == '__main__': # 명시적 __name__ main 이라면 그것이 메인이다
+if __name__ == '__main__':
     main()

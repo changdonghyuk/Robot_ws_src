@@ -8,9 +8,9 @@ class MinimalSubscriber(Node):
 
     def __init__(self):
         super().__init__('minimal_subscriber')
-        self.create_subscription(String, 'hello', self.callback,10)
+        self.create_subscription(String, 'hello', self.get_hello,10)
 
-    def callback(self, msg):
+    def get_hello(self, msg):
         print('"%s"' % msg.data)
 
 

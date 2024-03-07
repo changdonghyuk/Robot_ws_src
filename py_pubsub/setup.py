@@ -23,8 +23,8 @@ setup(
                 'simple_pub = py_pubsub.minimal_pub:main',
                 'listener = py_pubsub.minimal_sub:main',
                 'timer_test = py_pubsub.timer_test:main',
-                'pubkb = py_pubsub.pub_by_kb:main',
-                'subkb = py_pubsub.sub_by_kb:main',
+                'pub_by_kb = py_pubsub.pub_by_kb:main',
+                'sub_by_kb = py_pubsub.sub_by_kb:main',
         ],
     },
 )

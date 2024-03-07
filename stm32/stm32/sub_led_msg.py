@@ -3,7 +3,7 @@ from rclpy.node import Node
 from std_msgs.msg import String
 import serial
 
-sp  = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
+#sp  = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
 
 class Sub_LED_MSG(Node):
 
@@ -15,10 +15,10 @@ class Sub_LED_MSG(Node):
     
         if msg.data == "LED On":
             print("Send '1'")
-            sp.write(b'1')
+            #sp.write(b'1')
         elif msg.data == "LED Off":
             print("Send '0'")
-            sp.write(b'0')
+            #sp.write(b'0')
         else:
             pass
 

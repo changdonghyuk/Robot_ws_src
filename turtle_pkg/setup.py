@@ -13,13 +13,16 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='deepjd',
-    maintainer_email='deepjd@todo.todo',
+    maintainer='gnd0',
+    maintainer_email='greattoe@gmail.com',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+                'remote_turtle = turtle_pkg.remote_turtle:main',
+                'sub_turtle_pose = turtle_pkg.sub_turtle_pose:main',
+                'remote_tb3 = turtle_pkg.remote_tb3:main',
         ],
     },
 )
